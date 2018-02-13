@@ -1,4 +1,4 @@
-# README
+# README 
 ### by Felix M Key
 
 Contact the author at key [at] shh [dot] mpg [dot] de for any questions about this code
@@ -11,13 +11,14 @@ Please cite this paper if any meaningful piece of it was recycled for your analy
 The scripts likely need to be modified to suit the file structure and source code paths on any other local computer.
 
 The package is structured, by all that resembles data, can be found in the data folder; while all scripts and in-house dependencies are in the src folder. ABC is further sub-divided in its respective single analyses.
-Please, note that some figures were made by hand for representative purposes of for improved representation. For those the underlying data is included (if any).
+Scripts/data for ABC, PGLS, and GLMM can also be found on gitHub (https://github.com/keyfm)
+Please, note that some figures were made by hand for representative purposes of for improved representation. For those the underlying data is included (if any).  
 Enjoy!
 
 
 ## Latitude, Temperature and Signatures of Natural Selection
 
-VCF-coded genotype info for all populations in our TRPM8 target region can be found in data/
+VCF-coded genotype info for all populations in our TRPM8 target region can be found in data/  
 Latitude and Termperature raw data was obtained as described in the manuscript
 extract mean Temperature for geographic locations from CRU matrix
 
@@ -25,7 +26,7 @@ extract mean Temperature for geographic locations from CRU matrix
 Rscript src/get_meanT_CRUdata.r
 ```
 ## Natural Selection Signatures and Genotype Population info (Table 1)
-summary statisitics calculated as described in manuscript
+summary statistics calculated as described in manuscript  
 all data for Table 1 can be generated with following R script
 
 ```
