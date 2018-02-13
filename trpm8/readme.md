@@ -1,5 +1,5 @@
 # README
-## by Felix M Key
+### by Felix M Key
 
 Contact the author at key [at] shh [dot] mpg [dot] de for any questions about this code
 or correspondence about this work.
