@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+# This is a simple example of a SGE batch script
+# request Bourne shell as shell for job
+#$ -S /bin/bash #defines the used shell
+#$ -cwd
+#$ -q all.q
+# load personal profile
+#$ -V
+#$ -M felix_key@eva.mpg.de
+#$ -m e
+#$ -l h_vmem=4G,s_vmem=4.5G
+#$ -t 1-100 #the amount of total job-ids (number of jobs)
+# if you want to run on all local computers as well #$ -l class=*
+
+# Job Array with jobs corresponding to each chromosome 
+
+#$ -e /mnt/scratch/felix/tmp/sge_logs/sge_abc_logs_e
+#$ -o /mnt/scratch/felix/tmp/sge_logs/sge_abc_logs_o
+
+## THINGs to CHANGE for EACH run
+# check ${path}
+# check ${script_path} ... make sure mk_msms and sumstat python code have not changed (correct paths!)
+
+# PATHs fix
+path=/mnt/scratch/felix/trpm8/abc/run3_out/sge_out
+mkdir -p ${path}
+
+script_path=/mnt/scratch/felix/trpm8/abc/abc_scripts/run3
+# NOTE the make msms command script stays the same like in run1. Only py scripts modified!
+
+# Arguments
+model=${1}
+pop=${2}
+
+# Change max number of sims if NTR model (does not need a 1M)
+cap=10000
+if [[ ${model} == 'ntr' ]]; then
+    cap=1000
+fi
+
+# RUN:
+# remove output files in case they exist already (all output is appended!)
+rm -f ${path}/ss_${model}_${pop}_${SGE_TASK_ID}.txt ${path}/log_${model}_${pop}_${SGE_TASK_ID}.txt
+# ${path}/sim_${model}_${pop}_${SGE_TASK_ID}.msms
+
+# run xk sims
+ctr=0
+while [[ $ctr -le ${cap} ]]; do 
+    /home/felix_schulze/src/msms/bin/msms $(Rscript ${script_path}/mk_msms_trpm8_ABCrun1.r ${pop} ${model} ) \
+	| ${script_path}/abc_call_func.py -mc ${model} \
+	>> ${path}/ss_${model}_${pop}_${SGE_TASK_ID}.txt
+    ((ctr = $ctr + 1))
+done >> ${path}/log_${model}_${pop}_${SGE_TASK_ID}.txt 2>&1
+
+exit 0
+
+
+# while [[ $ctr -le ${cap} ]]; do 
+#     /home/felix_schulze/src/msms/bin/msms $(Rscript ${script_path}/mk_msms_trpm8_ABCrun1.r ${pop} ${model} ) \
+# 	|tee -a ${path}/sim_${model}_${pop}_${SGE_TASK_ID}.msms \
+# 	| ${script_path}/abc_call_func.py -mc ${model} \
+# 	>> ${path}/ss_${model}_${pop}_${SGE_TASK_ID}.txt
+#     ((ctr = $ctr + 1))
+# done >> ${path}/log_${model}_${pop}_${SGE_TASK_ID}.txt 2>&1
+## bgzip the msms data
+# bgzip ${path}/sim_${model}_${pop}_${SGE_TASK_ID}.msms
+

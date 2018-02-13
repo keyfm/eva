@@ -1,0 +1,21 @@
+//inputfile for the program ABCestimator: /mnt/scratch/felix/trpm8/abc/abc_scripts/ABCest_template_power_wTnT.input
+estimationType standard
+//file with the simulations. Consists of first the parameters and then the stats. A header line is required!
+simName /mnt/scratch/felix/trpm8/abc/run-RID-_out/transf/all_sumstat_5ParamBT_trans_-CONT-_-TESTAGAINSTMOD-_-TRUNCTEST-_run-RID-v-VERSION-_5PLS.tsv
+//file with obnserved statistics. A Header is required with names corresponding to the stats in the simfile!
+obsName /mnt/scratch/felix/trpm8/abc/analysis/run-RID-/power/-CONT-_run-RID-v-VERSION-_-MODEL-_-TRUNCATED-_cap-NUMCAP-/tmp/sample.obs
+//columns containg parameters for which estimates will be produced
+params -PARAM_COLS-
+//number of simulations to estimate the GLM on
+numRetained     1000
+maxReadSims     100000
+//the width of the diracpeaks, affecting the smoothing..
+diracPeakWidth 0.001
+//number of points at which to estimate posterior density
+posteriorDensityPoints 100
+//should the statistics be standardized? values: 1 / 0 (default)
+standardizeStats 1
+//should the prior be written in a file? values: 0 (default) / 1
+writeRetained 1
+obsPValue       1
+outputPrefix /mnt/scratch/felix/trpm8/abc/analysis/run-RID-/power/-CONT-_run-RID-v-VERSION-_-MODEL-_-TRUNCATED-_cap-NUMCAP-/tmp/out_-TESTAGAINSTMOD-_-TRUNCTEST-.
