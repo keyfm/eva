@@ -17,8 +17,7 @@ Enjoy!
 
 ## Latitude, Temperature and Signatures of Natural Selection
 
-VCF-coded genotype info for all populations in our TRPM8 target region can be found in data/
-
+VCF-coded genotype info for all populations in our TRPM8 target region can be found in data/  
 Latitude and Termperature raw data was obtained as described in the manuscript
 extract mean Temperature for geographic locations from CRU matrix
 
