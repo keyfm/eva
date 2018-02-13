@@ -1,4 +1,5 @@
-# README by Felix M Key
+# README
+## by Felix M Key
 
 Contact the author at key [at] shh [dot] mpg [dot] de for any questions about this code
 or correspondence about this work.
@@ -10,7 +11,6 @@ Please cite this paper if any meaningful piece of it was recycled for your analy
 The scripts likely need to be modified to suit the file structure and source code paths on any other local computer.
 
 The package is structured, by all that resembles data, can be found in the data folder; while all scripts and in-house dependencies are in the src folder. ABC is further sub-divided in its respective single analyses.
-Scripts/data for ABC, PGLS, and GLMM can also be found on gitHub (https://github.com/keyfm)
 Please, note that some figures were made by hand for representative purposes of for improved representation. For those the underlying data is included (if any).
 Enjoy!
 
