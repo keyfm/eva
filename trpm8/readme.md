@@ -5,28 +5,28 @@ Contact the author at key [at] shh [dot] mpg [dot] de for any questions about th
 or correspondence about this work.
 
 This README guides you through the process of analyses and figure/table creation presented in 
-Key et al. Human local adaptation of the TRPM8 cold receptor along a latitudinal cline 
+Key et al. Human local adaptation of the TRPM8 cold receptor along a latitudinal cline. PLoS Genetics (2018)
 Please cite this paper if any meaningful piece of it was recycled for your analysis.
 
-The scripts likely need to be modified to suit the file structure and source code paths on any other local computer.
+The scripts need to be modified to suit the file structure and source code paths on any other local computer.
 
-The package is structured, by all that resembles data, can be found in the data folder; while all scripts and in-house dependencies are in the src folder. ABC is further sub-divided in its respective single analyses.
-Please, note that some figures were made by hand for representative purposes of for improved representation. For those the underlying data is included (if any).  
+The package is structured the following: the data folder contains all data; and all scripts (or in-house dependencies) are in the src folder. The ABC analysis is further sub-divided in its respective single analyses. All code comes absolutely without any warranty.
+Please, note a few figures were made by hand for representative purposes of for improved representation. For those the underlying data is included (if any).  
 Enjoy!
 
 
 ## Latitude, Temperature and Signatures of Natural Selection
 
-VCF-coded genotype info for all populations in our TRPM8 target region can be found in data/  
-Latitude and Termperature raw data was obtained as described in the manuscript
-extract mean Temperature for geographic locations from CRU matrix
+VCF-coded genotype info for all populations in our TRPM8 target region can be found in data/ .
+Latitude and Temperature raw data was obtained as described in the manuscript.
+Extract mean Temperature for geographic locations from CRU matrix:
 
 ```
 Rscript src/get_meanT_CRUdata.r
 ```
 ## Natural Selection Signatures and Genotype Population info (Table 1)
 Summary statistics calculated as described in manuscript.  
-All data for Table 1 can be generated with following R script.
+All data for Table 1 can be generated with the following R script.
 
 ```
 Rscript src/get_Table1stats.r
@@ -34,8 +34,6 @@ Rscript src/get_Table1stats.r
 
 
 ## PGLS analysis
-
-NOTE: add plotting!  
 Documented R code to run PGLS analysis
 
 ```
@@ -43,7 +41,6 @@ Rscript src/calcPGLS.r
 ```
 
 ## GLMM analysis 1000Genomes
-NOTE: add plotting!  
 Documented R code to run 1000Genomes GLMM analysis
 
 ```
@@ -51,16 +48,16 @@ Rscript src/calcGLMM_1kg.r
 ```
 
 ## GLMM analysis SGDP incl. 3D plot
-documented R code to run SGDP GLMM analysis
+Documented R code to run SGDP GLMM analysis:
 ```
 Rscript src/calcGLMM_sgdp.r
 ```
 
 ## ABC analysis
-We reported three ABC analyses in the paper.  
+We report three ABC analyses in the paper.  
 \#1: Continues selection (internal run3v8)  
-\#2: Discontinues seleciton (internal run4v1)  
-\#3: Continues and Discontinues seleciton models combined (internal run5v1)  
+\#2: Discontinues selection (internal run4v1)  
+\#3: Continues and Discontinues selection models combined (internal run5v1)  
 While \#1 and \#2 are independent analysis, in #3 uses the simulated data from #1 and #2 combined
 Wrapping scripts include:  
 	- simulations and summary stats calculation  
